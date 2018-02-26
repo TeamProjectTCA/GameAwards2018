@@ -1,5 +1,12 @@
-#include "DxLib.h"
+#include "Application.h"
 
+void main( ) {
+	ApplicationPtr app = Application::getInstance( );
+
+}
+
+
+/*
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow ) {
 	SetWindowText( "ShadowPaper" );
 	ChangeWindowMode( 1 );
@@ -27,3 +34,4 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 	DxLib_End( );
 	return 0;
 }
+*/
