@@ -6,3 +6,7 @@ Scene::Scene( ) {
 
 Scene::~Scene( ) {
 }
+
+void Scene::setNextScene( SCENE_NAME next ) {
+	_next_scene = next;
+}

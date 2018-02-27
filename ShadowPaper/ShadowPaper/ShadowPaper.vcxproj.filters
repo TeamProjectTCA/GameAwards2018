@@ -3,13 +3,32 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="SceneGame.cpp" />
-    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Scene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGame.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneTitle.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="SceneGame.h" />
-    <ClInclude Include="Scene.h" />
     <ClInclude Include="const.h" />
+    <ClInclude Include="Scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGame.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneTitle.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{4012b52d-5d76-40f1-a75e-41f3a84a8022}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

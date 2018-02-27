@@ -2,12 +2,13 @@
 #include "Scene.h"
 #include "smart_ptr.h"
 
-PTR( SceneGame );
+PTR( SceneTitle );
+PTR( Drawer );
 
-class SceneGame : public Scene {
+class SceneTitle : public Scene {
 public:
-	SceneGame( );
-	virtual ~SceneGame( );
+	SceneTitle( );
+	virtual ~SceneTitle( );
 public:
 	void update( );
 private:

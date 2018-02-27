@@ -8,6 +8,7 @@ public:
 public:
 	virtual void update( ) = 0;
 public:
+	void setNextScene( SCENE_NAME next );
 	SCENE_NAME getNextScene( ) { return _next_scene; };
 
 private:

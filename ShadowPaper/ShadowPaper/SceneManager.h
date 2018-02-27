@@ -9,7 +9,7 @@ PTR( Scene );
 
 class SceneManager : public Task {
 public:
-	static std::string getTag( ) { return "SceneManager"; }
+	static std::string getTag( ) { return "SCENEMANAGER"; }
 	static SceneManagerPtr getTask( );
 public:
 	SceneManager( );
@@ -18,9 +18,9 @@ public:
 	void update( );
 private:
 	void changeNextScene( );
+	std::string convSceneToString( SCENE_NAME scene );
 private:
 	SCENE_NAME _next_scene;
 	ScenePtr _scene;
-	
 };
 
