@@ -3,6 +3,7 @@
 #include "smart_ptr.h"
 
 PTR( SceneGame );
+PTR( Player );
 
 class SceneGame : public Scene {
 public:
@@ -12,5 +13,6 @@ public:
 	void update( );
 private:
 	int _cnt;
+	PlayerPtr _player;
 };
 
