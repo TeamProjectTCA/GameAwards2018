@@ -1,11 +1,15 @@
 #pragma once
 #include "const.h"
+#include "smart_ptr.h"
+#include "Object.h"
 #include <array>
 
-class Map {
+PTR( ObjectMap );
+
+class ObjectMap : public Object {
 public:
-	Map( );
-	virtual ~Map( );
+	ObjectMap( );
+	virtual ~ObjectMap( );
 
 public:
 	void update( );

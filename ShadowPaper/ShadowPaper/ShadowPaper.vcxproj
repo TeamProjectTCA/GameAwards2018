@@ -161,7 +161,7 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="ObjectMap.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="ObjectTest.cpp" />
@@ -180,7 +180,7 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="const.h" />
-    <ClInclude Include="Map.h" />
+    <ClInclude Include="ObjectMap.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="ObjectTest.h" />

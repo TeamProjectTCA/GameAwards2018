@@ -15,3 +15,14 @@ enum SCENE_NAME {
 	GAME,	
 	END,
 };
+
+//当たり判定のタイプ
+enum COL_TYPE {
+	COL_MAP,
+	COL_RECT,
+	COL_CIRCLE,
+};
+
+//当たり判定のタグ
+enum HIT_TAG {
+};

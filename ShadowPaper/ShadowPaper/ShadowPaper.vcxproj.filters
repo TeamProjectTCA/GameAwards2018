@@ -12,7 +12,6 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Map.cpp" />
     <ClCompile Include="ColliderManager.cpp">
       <Filter>Collider\Manager</Filter>
     </ClCompile>
@@ -31,6 +30,9 @@
     <ClCompile Include="SceneManager.cpp">
       <Filter>Scene\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectMap.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="const.h" />
@@ -44,7 +46,6 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Map.h" />
     <ClInclude Include="ColliderManager.h">
       <Filter>Collider\Manager</Filter>
     </ClInclude>
@@ -62,6 +63,9 @@
     </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>Scene\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectMap.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

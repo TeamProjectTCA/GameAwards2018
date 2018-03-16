@@ -24,6 +24,6 @@ void Player::update( ) {
 	}
 }
 
-void Player::draw( ) const {
-	DrawModiGraphF( _pos.x - 25.0f, _pos.y -  25.0f, _pos.x +  25.0f, _pos.y -  25.0f, _pos.x +  25.0f, _pos.y +  25.0f, _pos.x -  25.0f, _pos.y +  25.0f, _handle, TRUE );
+void Player::draw( ) {
+	DrawRotaGraph( _pos.x, _pos.y, 1, 0, _handle, TRUE );
 }

@@ -3,6 +3,7 @@
 #include <list>
 
 PTR( Object );
+PTR( Collider );
 
 class Object {
 public:
@@ -25,5 +26,7 @@ protected:
 private:
 	bool _fin;
 	std::list< ObjectPtr > _objs;
+
+	ColliderPtr _col;
 };
 

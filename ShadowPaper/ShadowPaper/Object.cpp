@@ -1,6 +1,8 @@
 #include "Object.h"
+#include "Collider.h"
 
 Object::Object( ) {
+	_col = ColliderPtr( );
 }
 
 Object::~Object( ) {

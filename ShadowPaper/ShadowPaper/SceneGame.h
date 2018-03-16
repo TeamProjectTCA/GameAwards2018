@@ -4,7 +4,7 @@
 
 PTR( SceneGame );
 PTR( Player );
-PTR( Map );
+PTR( ObjectMap );
 PTR( ObjectManager );
 
 class SceneGame : public Scene {
@@ -16,7 +16,7 @@ public:
 private:
 	int _cnt;
 	PlayerPtr _player;
-	MapPtr _map;
+	ObjectMapPtr _map;
 
 	ObjectManagerPtr _manager;
 };

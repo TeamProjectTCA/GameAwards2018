@@ -74,7 +74,7 @@ ImagePtr Drawer::createImage( const char* filename ) const {
 			result = image;
 		}
 	}
-		
+
 	return result;
 }
 

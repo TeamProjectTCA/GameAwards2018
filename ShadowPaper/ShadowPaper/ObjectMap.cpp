@@ -1,9 +1,9 @@
-#include "Map.h"
+#include "ObjectMap.h"
 #include "DxLib.h"
 #include <random>
 #include <limits.h>
 
-Map::Map( ) {
+ObjectMap::ObjectMap( ) {
 	std::array< std::array< unsigned char, MAP_SIZE_X >, MAP_SIZE_Y  >( ).swap( _map_obj );
 	std::array< std::array< unsigned char, MAP_SIZE_X >, MAP_SIZE_Y  >( ).swap( _map_collider );
 
@@ -82,17 +82,17 @@ Map::Map( ) {
 	_handle = LoadGraph( "Resources/test_block.png" );
 }
 
-Map::~Map( ) {
+ObjectMap::~ObjectMap( ) {
 }
 
-void Map::update( ) {
+void ObjectMap::update( ) {
 	_cnt++;
 	if ( _cnt == INT_MAX ) {
 		_cnt = 0;
 	}
 }
 
-void Map::draw( ) {
+void ObjectMap::draw( ) {
 	for ( int i = 0; i < MAP_SIZE_Y; i++ ) {
 		for ( int j = 0; j < MAP_SIZE_X; j++ ) {
 			if ( _map_obj[ i ][ j ] ) {

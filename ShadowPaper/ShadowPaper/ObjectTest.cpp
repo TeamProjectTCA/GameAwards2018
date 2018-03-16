@@ -13,7 +13,6 @@ ObjectTest::~ObjectTest( ) {
 
 void ObjectTest::update( ) {
 	_pos.x++;
-
 	_time++;
 
 	if( _time > 120 ) {
