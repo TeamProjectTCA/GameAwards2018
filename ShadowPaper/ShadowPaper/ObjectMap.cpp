@@ -79,6 +79,8 @@ ObjectMap::ObjectMap( ) {
 		}
 	}
 
+	_col = ColliderMapPtr( new ColliderMap( ) );
+	_col->set( _map_collider );
 	_handle = LoadGraph( "Resources/test_block.png" );
 }
 
@@ -102,3 +104,9 @@ void ObjectMap::draw( ) {
 	}
 
 }
+
+ColliderPtr ObjectMap::getCol( ) {
+	return _col;
+}
+
+

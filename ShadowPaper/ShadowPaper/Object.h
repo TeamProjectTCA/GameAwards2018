@@ -17,8 +17,9 @@ public:
 
 public:
 	int getAddObjSize( );
-	ObjectPtr getAddObj( );
 	bool isFin( ) const;
+	ObjectPtr getAddObj( );
+	virtual ColliderPtr getCol( );
 
 protected:
 	void addObj( ObjectPtr obj );
@@ -26,7 +27,5 @@ protected:
 private:
 	bool _fin;
 	std::list< ObjectPtr > _objs;
-
-	ColliderPtr _col;
 };
 

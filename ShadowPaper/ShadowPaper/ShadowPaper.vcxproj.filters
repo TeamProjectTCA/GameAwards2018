@@ -33,6 +33,15 @@
     <ClCompile Include="ObjectMap.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="ColliderCircle.cpp">
+      <Filter>Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="ColliderMap.cpp">
+      <Filter>Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="ColliderRect.cpp">
+      <Filter>Collider</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="const.h" />
@@ -66,6 +75,15 @@
     </ClInclude>
     <ClInclude Include="ObjectMap.h">
       <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderCircle.h">
+      <Filter>Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderMap.h">
+      <Filter>Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderRect.h">
+      <Filter>Collider</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

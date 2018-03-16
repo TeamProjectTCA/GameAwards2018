@@ -159,7 +159,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="ColliderCircle.cpp" />
     <ClCompile Include="ColliderManager.cpp" />
+    <ClCompile Include="ColliderMap.cpp" />
+    <ClCompile Include="ColliderRect.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ObjectMap.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -178,7 +181,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collider.h" />
+    <ClInclude Include="ColliderCircle.h" />
     <ClInclude Include="ColliderManager.h" />
+    <ClInclude Include="ColliderMap.h" />
+    <ClInclude Include="ColliderRect.h" />
     <ClInclude Include="const.h" />
     <ClInclude Include="ObjectMap.h" />
     <ClInclude Include="Object.h" />

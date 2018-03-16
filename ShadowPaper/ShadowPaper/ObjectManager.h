@@ -4,6 +4,7 @@
 
 PTR( ObjectManager );
 PTR( Object );
+PTR( ColliderManager );
 
 class ObjectManager {
 public:
@@ -17,5 +18,6 @@ public:
 
 private:
 	std::list< ObjectPtr > _objs;
+	ColliderManagerPtr _col_manager;
 };
 

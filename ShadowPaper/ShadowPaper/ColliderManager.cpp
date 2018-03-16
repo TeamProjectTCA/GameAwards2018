@@ -1,4 +1,7 @@
 #include "ColliderManager.h"
+#include "ColliderCircle.h"
+#include "ColliderMap.h"
+#include "ColliderRect.h"
 
 ColliderManager::ColliderManager( ) {
 }
@@ -14,81 +17,112 @@ void ColliderManager::draw( ) {
 }
 
 void ColliderManager::update( ) {
-	//std::list< ColliderPtr >::iterator ite = _cols.begin( );
-	//std::list< ColliderPtr >::iterator ite2;
-	//int size = ( int )_cols.size( );
-	//if ( size < 2 ) {
-	//	return;
-	//}
-
-	//for( int i = 0; i < size; i++ ) {
-	//	ite2 = ite;
-	//	ite2++;
-	//	for( int j = 0; j < size - 1 - i; j++ ) {
-	//		bool test = false;
-	//		if ( ( *ite )->getType( ) == COL_CIRCLE ) {
-	//			if( (*ite2)->getTag( ) == COL_CIRCLE ) {
-	//				collideBallToBall( *ite,*ite2 );
-	//			}
-	//			if( (*ite2)->getTag( ) == "LINE" ) {
-	//				collideBallToLine( *ite, *ite2 );
-	//			}
-	//			if ( (*ite2)->getTag() == COL_RECT ) {
-	//				collideBallToBox( *ite, *ite2 );
-	//			}
-	//		}
-	//		if( (*ite)->getTag() == "LINE" ) {
-	//			if( (*ite2)->getTag() == COL_CIRCLE ) {
-	//				collideBallToLine( *ite2, *ite );
-	//			}
-	//			if( (*ite2)->getTag() == "LINE" ) {
-	//				collideLineToLine( *ite, *ite2 );
-	//			}
-	//			if ( (*ite2)->getTag() == COL_RECT ) {
-	//				collideLineToBox( *ite, *ite2 );
-	//			}
-	//		}
-	//		if( (*ite)->getTag() == COL_RECT ) {
-	//			if( (*ite2)->getTag() == COL_CIRCLE ) {
-	//				collideBallToBox( *ite2, *ite );
-	//			}
-	//			if( (*ite2)->getTag() == "LINE" ) {
-	//				collideLineToBox( *ite2, *ite );
-	//			}
-	//			if ( (*ite2)->getTag() == COL_RECT ) {
-	//				collideBoxToBox( *ite, *ite2 );
-	//			}
-	//		}
+	std::list< ColliderPtr >::iterator ite;
+	for ( ite = _cols.begin( ); ite != _cols.end( );) {
+		if( ( *ite )->isFin( ) ) {
+			ite = _cols.erase( ite );
+		} else {
+			ite++;
+		}
+	}
 
 
-	//		if( (*ite)->getTag() == "MAP" ) {
-	//			if( (*ite2)->getTag( ) == "BOXS" ) {
-	//				collideMapToBoxStatic( (*ite), (*ite2) );
-	//			}
-	//		}
-	//		if( (*ite)->getTag() == "BOXS" ) {
-	//			if( (*ite2)->getTag() == "MAP" ) {
-	//				collideMapToBoxStatic( (*ite2), (*ite) );
-	//			}
-	//		}
-	//		ite2++;
-	//	}
-	//	ite++;
-	//}
+	int size = ( int )_cols.size( );
+	if ( size < 2 ) {
+		return;
+	}
+
+	std::list< ColliderPtr >::iterator ite2 = ite;
+	for ( ite = _cols.begin( ); ite != _cols.end( ); ite++ ) {
+		( *ite )->draw( );
+
+		ite2 = ite;
+		ite2++;
+
+		COL_TYPE type1 = ( *ite )->getType( );
+		for ( ite2; ite2 != _cols.end( ); ite2++ ) {
+			bool test = false;
+			COL_TYPE type2 = ( *ite2 )->getType( );
+
+			if ( type1 == COL_CIRCLE ) {
+				if( type2 == COL_CIRCLE ) {
+					collideCircleToCircle( *ite, *ite2 );
+				}
+				if ( type2 == COL_RECT ) {
+					collideCircleToRect( *ite, *ite2 );
+				}
+			}
+
+			if ( type1 == COL_RECT ) {
+				if( type2 == COL_CIRCLE ) {
+					collideCircleToRect( *ite2, *ite );
+				}
+				if ( type2 == COL_RECT ) {
+					collideRectToRect( *ite, *ite2 );
+				}
+
+				if( type2 == COL_MAP ) {
+					collideMapToRect( *ite2, *ite );
+				}
+			}
+
+			if ( type1 == COL_MAP ) {
+				if ( type2 == COL_RECT ) {
+					collideMapToRect( *ite, *ite2 );
+				}
+			}
+		}
+	}
 }
-//
-//void ColliderManager::addCollide( ColliderPtr col ) {
-//	_cols.push_back( col );
-//}
-//
-//void ColliderManager::clearHit( ) {
-//	std::list< ColliderPtr >::iterator ite = _cols.begin( );
-//	while ( ite != _cols.end( ) ) {
-//		(*ite)->setHit( false );
-//		ite++;
-//	}
-//}
-//
+
+void ColliderManager::collideCircleToCircle( ColliderPtr col_circle1, ColliderPtr col_circle2 ) {
+	ColliderCirclePtr c_ball1 = std::dynamic_pointer_cast< ColliderCircle >( col_circle1 );
+	ColliderCirclePtr c_ball2 = std::dynamic_pointer_cast< ColliderCircle >( col_circle2 );
+
+	if ( ( c_ball1->getPos( ) - c_ball2->getPos( ) ).getLength( ) < c_ball1->getSize( ) + c_ball2->getSize( ) ) {
+		c_ball1->hit( );
+		c_ball2->hit( );
+	}
+}
+
+void ColliderManager::collideCircleToRect( ColliderPtr col_circle, ColliderPtr col_rect ) {
+
+}
+void ColliderManager::collideRectToRect( ColliderPtr col_rect1, ColliderPtr col_rect2 ) {
+
+}
+
+void ColliderManager::collideMapToRect( ColliderPtr col_map, ColliderPtr col_rect ) {
+	ColliderMapPtr map = std::dynamic_pointer_cast< ColliderMap >( col_map );
+	ColliderRectPtr rect = std::dynamic_pointer_cast< ColliderRect >( col_rect );
+
+	int lx = rect->getLx( );
+	int ly = rect->getLy( );
+	int rx = rect->getRx( );
+	int ry = rect->getRy( );
+
+	if ( map->getPointCol( rx, ry ) || 
+		 map->getPointCol( rx, ly ) ||
+		 map->getPointCol( lx, ry ) ||
+		 map->getPointCol( lx, ly ) ) {
+		map->hit( );
+		rect->hit( );
+	}
+
+}
+
+
+void ColliderManager::add( ColliderPtr col ) {
+	_cols.push_back( col );
+}
+
+void ColliderManager::reset( ) {
+	std::list< ColliderPtr >::iterator ite;
+	for ( ite = _cols.begin( ); ite != _cols.end( ); ite++ ) {
+		( *ite )->reset( );
+	}
+}
+
 ////protected
 //void ColliderManager::collideBallToBall( ColliderPtr ball1, ColliderPtr ball2 ) {
 //	ColliderBallPtr c_ball1 = std::dynamic_pointer_cast< CollideBall >( ball1 );

@@ -21,6 +21,7 @@ enum COL_TYPE {
 	COL_MAP,
 	COL_RECT,
 	COL_CIRCLE,
+	COL_NONE,
 };
 
 //“–‚½‚è”»’è‚Ìƒ^ƒO

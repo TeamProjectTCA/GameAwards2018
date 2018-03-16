@@ -2,10 +2,13 @@
 #include "Collider.h"
 
 Object::Object( ) {
-	_col = ColliderPtr( );
 }
 
 Object::~Object( ) {
+}
+
+void Object::fin( ) {
+	_fin = true;
 }
 
 int Object::getAddObjSize( ) {
@@ -18,8 +21,8 @@ ObjectPtr Object::getAddObj( ) {
 	return obj;
 }
 
-void Object::fin( ) {
-	_fin = true;
+ColliderPtr Object::getCol( ) {
+	return ColliderPtr( );
 }
 
 bool Object::isFin( ) const {

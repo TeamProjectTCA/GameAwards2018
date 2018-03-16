@@ -1,7 +1,9 @@
 #include "ObjectManager.h"
 #include "Object.h"
+#include "ColliderManager.h"
 
 ObjectManager::ObjectManager( ) {
+	_col_manager = ColliderManagerPtr( new ColliderManager( ) );
 }
 
 ObjectManager::~ObjectManager( ) {
@@ -20,16 +22,16 @@ void ObjectManager::update( ) {
 		}
 	}
 
-
-
 	//終了したものを削除
 	for ( ite = _objs.begin( ); ite != _objs.end( );) {
 		if( ( *ite )->isFin( ) ) {
-			ite = _objs.erase( ite );	
+			ite = _objs.erase( ite );
 		} else {
 			ite++;
 		}
 	}
+
+	_col_manager->update( );
 }
 
 void ObjectManager::draw( ) {
@@ -43,5 +45,5 @@ void ObjectManager::add( ObjectPtr obj ) {
 	//オブジェクトデータをつめる
 	_objs.push_back( obj );
 	//当たり判定データをつめる
-	//_cols->add ( obj->getCol( ) );
+	_col_manager->add( obj->getCol( ) );
 }
