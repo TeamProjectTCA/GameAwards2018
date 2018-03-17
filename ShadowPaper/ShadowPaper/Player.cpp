@@ -12,8 +12,10 @@ Player::Player( ) {
 	_pos.y = 720 / 2;
 	_handle = LoadGraph( "Resources/walk_man.png" );
 
+	_vec = Vector( );
+
 	_col = ColliderRectPtr( new ColliderRect( ) );
-	_col->set( ( int )_pos.x - 25, ( int )_pos.y - 25, ( int )_pos.x + 25, ( int )_pos.y + 25 );
+	_col->set( ( int )_pos.x - 25, ( int )_pos.y - 25, ( int )_pos.x + 25, ( int )_pos.y + 25, Vector( ) );
 }
 
 Player::~Player( ) {
@@ -21,37 +23,39 @@ Player::~Player( ) {
 
 void Player::update( ) {
 	_pos_past = _pos;
+	_vec *= 0.95;
 
-	bool move = false;
-	float speed = 10;
+	float speed = 0.4;
 	if ( _keyboard->isHoldKey( "ARROW_RIGHT" ) ) {
-		_pos.x += speed;
-		move = true;
+		_vec.x += speed;
 	}
 	if ( _keyboard->isHoldKey( "ARROW_LEFT" ) ) {
-		_pos.x -= speed;
-		move = true;
+		_vec.x -= speed;
 	}
 	if ( _keyboard->isHoldKey( "ARROW_DOWN" ) ) {
-		_pos.y += speed;
-		move = true;
+		_vec.y += speed;
 	}
 	if ( _keyboard->isHoldKey( "ARROW_UP" ) ) {
-		_pos.y -= speed;
-		move = true;
+		_vec.y -= speed;
+	}
+	_vec.y += 0.2;
+
+	_pos += _vec;
+	if ( _vec.x < 0 ) {
+		_pos.x += 1; 
 	}
 
+	_pos = Vector( ( int )_pos.x, ( int )_pos.y, ( int )_pos.z );
 
-	if ( !move ) {
-		return;
-	}
-	_col->set( _pos.x - 25, _pos.y - 25, _pos.x + 25, _pos.y + 25 );
+	_col->set( ( int )_pos.x - 25, ( int )_pos.y - 25, ( int )_pos.x + 25, ( int )_pos.y + 25, _pos - _pos_past );
 }
 
 void Player::update2( ) {
 
 	if ( _col->isHit( ) ) {
-		_pos = _pos_past;
+		//_pos = _pos_past;
+
+		_pos += _col->getVecStatic( );
 	}
 
 }

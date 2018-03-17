@@ -95,11 +95,39 @@ void ColliderManager::collideRectToRect( ColliderPtr col_rect1, ColliderPtr col_
 void ColliderManager::collideMapToRect( ColliderPtr col_map, ColliderPtr col_rect ) {
 	ColliderMapPtr map = std::dynamic_pointer_cast< ColliderMap >( col_map );
 	ColliderRectPtr rect = std::dynamic_pointer_cast< ColliderRect >( col_rect );
+	Vector move = rect->getMove( );
+	int dif_move = 0;
 
-	if ( map->getRectCol( rect->getLx( ), rect->getLy( ), rect->getRx( ), rect->getRy( ) ) ) {
+	if ( map->getRectCol( rect->getLx( ), rect->getLy( ) - ( int )move.y, rect->getRx( ), rect->getRy( ) - ( int )move.y ) ) {//x‚¶‚­‚Ì“–‚½‚è”»’è
+		if ( move.x > 0 ) {
+			dif_move = rect->getRx( ) % MAP_BLOCK_SIZE;
+			dif_move = -dif_move - 1;
+		} else {
+			dif_move = MAP_BLOCK_SIZE - ( rect->getLx( ) % MAP_BLOCK_SIZE );
+		}
+		rect->addVecStatic( Vector( dif_move, 0, 0 ) );
 		map->hit( );
 		rect->hit( );
 	}
+
+	if ( map->getRectCol( rect->getLx( ) - ( int )move.x, rect->getLy( ), rect->getRx( ) - ( int )move.x, rect->getRy( ) ) ) {//y‚¶‚­‚Ì“–‚½‚è”»’è
+		if ( move.y > 0 ) {
+			dif_move = rect->getRy( ) % MAP_BLOCK_SIZE;
+			dif_move = -dif_move - 1;
+		} else {
+			dif_move = MAP_BLOCK_SIZE - ( rect->getLy( ) % MAP_BLOCK_SIZE );
+		}
+		rect->addVecStatic( Vector( 0, dif_move, 0 ) );
+		map->hit( );
+		rect->hit( );
+	}
+
+
+	//if ( map->getRectCol( rect->getLx( ), rect->getLy( ), rect->getRx( ), rect->getRy( ) != 0 ) ) {
+	//	int diff = rect->getLx( ) % MAP_BLOCK_SIZE;
+	//	map->hit( );
+	//	rect->hit( );
+	//}
 
 }
 

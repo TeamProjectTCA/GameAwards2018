@@ -25,6 +25,8 @@ private:
 	Vector _pos_past;
 	int _handle;
 
+	Vector _vec;
+
 	DevicePtr _device;
 	KeyboardPtr _keyboard;
 	ColliderRectPtr _col;

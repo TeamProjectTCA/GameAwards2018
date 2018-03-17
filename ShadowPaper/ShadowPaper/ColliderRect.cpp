@@ -8,11 +8,13 @@ ColliderRect::ColliderRect( ) {
 ColliderRect::~ColliderRect( ) {
 }
 
-void ColliderRect::set( int lx, int ly, int rx, int ry ) {
+void ColliderRect::set( int lx, int ly, int rx, int ry, Vector move ) {
 	_lx = lx;
 	_ly = ly;
 	_rx = rx;
 	_ry = ry;
+
+	setMove( move );
 }
 
 void ColliderRect::draw( ) {
