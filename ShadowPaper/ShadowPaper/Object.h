@@ -12,6 +12,7 @@ public:
 
 public:
 	virtual void update( ) { };
+	virtual void update2( ) { };
 	virtual void draw( ) { };
 	void fin( );
 

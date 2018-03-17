@@ -22,7 +22,7 @@ void SceneManager::update( ) {
 	//Ÿ‚ÌƒV[ƒ“‚ğ”»’è
 	changeNextScene( );
 
-	DrawString( 20, 20, convSceneToString( _next_scene ).c_str( ), 0xffffff );
+	//DrawString( 20, 20, convSceneToString( _next_scene ).c_str( ), 0xffffff );
 	ScreenFlip( );
 }
 

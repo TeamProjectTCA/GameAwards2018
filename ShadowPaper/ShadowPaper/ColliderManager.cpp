@@ -96,21 +96,12 @@ void ColliderManager::collideMapToRect( ColliderPtr col_map, ColliderPtr col_rec
 	ColliderMapPtr map = std::dynamic_pointer_cast< ColliderMap >( col_map );
 	ColliderRectPtr rect = std::dynamic_pointer_cast< ColliderRect >( col_rect );
 
-	int lx = rect->getLx( );
-	int ly = rect->getLy( );
-	int rx = rect->getRx( );
-	int ry = rect->getRy( );
-
-	if ( map->getPointCol( rx, ry ) || 
-		 map->getPointCol( rx, ly ) ||
-		 map->getPointCol( lx, ry ) ||
-		 map->getPointCol( lx, ly ) ) {
+	if ( map->getRectCol( rect->getLx( ), rect->getLy( ), rect->getRx( ), rect->getRy( ) ) ) {
 		map->hit( );
 		rect->hit( );
 	}
 
 }
-
 
 void ColliderManager::add( ColliderPtr col ) {
 	_cols.push_back( col );

@@ -16,11 +16,13 @@ public:
 	virtual ~Player( );
 public:
 	void update( );
+	void update2( );
 public:
 	void draw( );
 	ColliderPtr getCol( );
 private:
 	Vector _pos;
+	Vector _pos_past;
 	int _handle;
 
 	DevicePtr _device;

@@ -22,6 +22,14 @@ void ObjectManager::update( ) {
 		}
 	}
 
+	//“–‚½‚è”»’è
+	_col_manager->update( );
+    
+	//“–‚½‚è”»’è@”½‰f;
+	for ( ite = _objs.begin( ); ite != _objs.end( ); ite++ ) {
+		( *ite )->update2( );
+	}
+
 	//I—¹‚µ‚½‚à‚Ì‚ğíœ
 	for ( ite = _objs.begin( ); ite != _objs.end( );) {
 		if( ( *ite )->isFin( ) ) {
@@ -31,7 +39,7 @@ void ObjectManager::update( ) {
 		}
 	}
 
-	_col_manager->update( );
+	_col_manager->reset( );
 }
 
 void ObjectManager::draw( ) {

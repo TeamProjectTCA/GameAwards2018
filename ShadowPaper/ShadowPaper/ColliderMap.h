@@ -15,6 +15,7 @@ public:
 	void set( std::array< std::array< unsigned char, MAP_SIZE_X >, MAP_SIZE_Y > data );
 
 	bool getPointCol( int x, int y );
+	int getRectCol( int lx, int ly, int rx, int ry );
 
 private:
 	std::array< std::array< unsigned char, MAP_SIZE_X >, MAP_SIZE_Y > _col;
